@@ -22,12 +22,12 @@ const packageJson = {
 
 if (PackageMap[platform][architecture].supported) {
   const bin = PackageMap[platform][architecture].platform === 'win32' ? './bin/deno.exe' : './bin/deno'
-  const finalPackageJson = { ...packageJson, bin: { 'deno': bin, 'deno-npx': bin } }
+  const finalPackageJson = { ...packageJson, bin: { 'deno-npx-platform': bin }}
   const output = new TextEncoder().encode(JSON.stringify(finalPackageJson, null, 2))
   Deno.writeFileSync(`build/dist/package.json`, output)
 } else {
   const bin = './bin/unsupported.js'
-  const finalPackageJson = { ...packageJson, bin: { 'deno': bin, 'deno-npx': bin } }
+  const finalPackageJson = { ...packageJson, bin: { 'deno-npx-platform': bin }}
   const output = new TextEncoder().encode(JSON.stringify(finalPackageJson, null, 2))
   Deno.writeFileSync(`build/dist/package.json`, output)
   Deno.copyFileSync('unsupported.js', 'build/dist/bin/unsupported.js')
