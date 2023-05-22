@@ -20,6 +20,6 @@ export const pkg = {
     'url': 'https://github.com/cassiecascade/deno-npx/issues',
   },
   engines: {
-    node: '>=18'
-  }
+    node: '>=18',
+  },
 }

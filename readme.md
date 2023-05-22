@@ -10,8 +10,8 @@ Use deno through npm | npx.
 
 Currently only supports v1.0.0 of deno, as I test and build out automation.
 
-Inspired by [Yoshiya Hinosawa (kt3k)](https://github.com/kt3k)'s work on
-[deno-bin](https://github.com/kt3k/deno-bin) but I wanted a version that meets these requirements:
+Inspired by [Yoshiya Hinosawa (kt3k)](https://github.com/kt3k)'s work on [deno-bin](https://github.com/kt3k/deno-bin)
+but I wanted a version that meets these requirements:
 
 1. Is built with deno (and typescript).
 2. Leverages npm and optional dependencies to do most of the work.

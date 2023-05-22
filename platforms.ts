@@ -5,8 +5,8 @@
  */
 
 export enum Architecture {
-  x86_64 = "x86_64",
-  aarch64 = "aarch64",
+  x86_64 = 'x86_64',
+  aarch64 = 'aarch64',
 }
 
 export enum Platform {
@@ -28,7 +28,7 @@ export const PackageMap = {
       name: 'apple-arm64',
       platform: 'darwin',
       arch: 'arm64',
-    }
+    },
   },
   [Platform.windows]: {
     [Architecture.x86_64]: {
@@ -42,7 +42,7 @@ export const PackageMap = {
       name: 'windows-arm64',
       platform: 'win32',
       arch: 'arm64',
-    }
+    },
   },
   [Platform.linux]: {
     [Architecture.x86_64]: {
@@ -56,6 +56,6 @@ export const PackageMap = {
       name: 'linux-arm64',
       platform: 'linux',
       arch: 'arm64',
-    }
-  }
+    },
+  },
 }
