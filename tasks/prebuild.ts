@@ -4,7 +4,7 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
-Deno.removeSync('build', { recursive: true })
+try { Deno.removeSync('build', { recursive: true }) } catch (_error) {}
 Deno.mkdirSync('build/dist/bin', { recursive: true })
 Deno.copyFileSync('license.md', 'build/dist/license.md')
 Deno.copyFileSync('readme.md', 'build/dist/readme.md')
