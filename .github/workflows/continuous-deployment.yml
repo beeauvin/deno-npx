@@ -16,7 +16,7 @@ jobs:
   build:
     strategy:
       matrix:
-        platform: [apple, linux, windows]
+        platform: [apple-darwin, unknown-linux-gnu, pc-windows-msvc]
         architecture: [x86_64, arm64]
     runs-on: ubuntu-latest
     steps:
