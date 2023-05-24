@@ -5,15 +5,15 @@
  */
 
 import {
-  DenoPlatform,
-  NodePlatform,
-  PackagePlatform,
   convert_platform_deno_to_node,
   convert_platform_deno_to_package,
   convert_platform_node_to_deno,
   convert_platform_node_to_package,
   convert_platform_package_to_deno,
   convert_platform_package_to_node,
+  DenoPlatform,
+  NodePlatform,
+  PackagePlatform,
 } from './platform.ts'
 
 import { assertEquals } from 'std/testing/asserts.ts'
