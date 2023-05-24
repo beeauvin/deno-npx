@@ -5,22 +5,13 @@
  */
 
 {
-  "tasks": {
-    "package": "deno run -A ./tasks/package.ts",
-    "prebuild": "deno run --allow-read --allow-write ./tasks/prebuild.ts",
-    "build:base": "deno run --allow-read --allow-write ./tasks/build-base.ts",
-    "build:platform": "deno run --allow-read --allow-write ./tasks/build-platform.ts",
-    "download": "./scripts/download.sh",
-    "unzip": "./scripts/unzip.sh"
-  },
+  "tasks": {},
   "imports": {
     "dnt/": "https://deno.land/x/dnt@0.35.0/",
     "std/": "https://deno.land/std@0.187.0/",
     "folklore": "https://deno.land/x/folklore@v0.2.0/mod.ts"
   },
-  "lint": {
-    "exclude": ["build", "package"]
-  },
+  "lint": {},
   "fmt": {
     "exclude": ["build", "package"],
     "lineWidth": 100,
