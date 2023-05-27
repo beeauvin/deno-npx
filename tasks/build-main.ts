@@ -6,22 +6,19 @@
 
 import { build, emptyDir } from 'dnt/mod.ts'
 
+import { get_version } from '../functions/get-inputs.ts'
 import { pkg } from '../package.ts'
 
-emptyDir('package')
-const version = Deno.args[0]
+emptyDir('build/deno-npx')
+const version = get_version()
 
 await build({
   entryPoints: [{
     kind: 'bin',
-    name: 'deno',
-    path: './bin.ts',
-  }, {
-    kind: 'bin',
     name: 'deno-npx',
     path: './bin.ts',
   }],
-  outDir: 'package',
+  outDir: 'build/deno-npx',
   test: false,
   esModule: false,
   scriptModule: 'cjs',
@@ -36,7 +33,6 @@ await build({
     version,
     // The above entrypoints forces /esm on bin for some reason.
     bin: {
-      'deno': './script/bin.js',
       'deno-npx': './script/bin.js',
     },
     optionalDependencies: {
@@ -49,8 +45,8 @@ await build({
     },
   },
   postBuild() {
-    Deno.copyFileSync('license.md', 'package/license.md')
-    Deno.copyFileSync('readme.md', 'package/readme.md')
-    Deno.removeSync('package/.npmignore')
+    Deno.copyFileSync('license.md', 'build/deno-npx/license.md')
+    Deno.copyFileSync('readme.md', 'build/deno-npx/readme.md')
+    Deno.removeSync('build/deno-npx/.npmignore')
   },
 })

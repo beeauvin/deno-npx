@@ -42,6 +42,7 @@ export function generatePackageJson(
     os: [convert_platform_package_to_node(platform)],
     cpu: [architecture],
     bin: {
+      'deno': supported ? bin : './bin/unsupported.js',
       'deno-npx-platform': supported ? bin : './bin/unsupported.js',
     },
   })

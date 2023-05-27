@@ -5,15 +5,20 @@
  */
 
 {
-  "tasks": {},
+  "tasks": {
+    "build:package": "deno run -A ./tasks/build-package.ts",
+    "build:main": "deno run -A ./tasks/build-main.ts"
+  },
   "imports": {
     "dnt/": "https://deno.land/x/dnt@0.35.0/",
     "std/": "https://deno.land/std@0.187.0/",
     "folklore": "https://deno.land/x/folklore@v0.2.2/mod.ts"
   },
-  "lint": {},
+  "lint": {
+    "exclude": ["build"]
+  },
   "fmt": {
-    "exclude": ["build", "package"],
+    "exclude": ["build"],
     "lineWidth": 100,
     "singleQuote": true,
     "semiColons": false
