@@ -9,26 +9,26 @@ import { download_binary, unzip_binary } from './download-unzip.ts'
 
 import { PackageArchitecture } from './platform/architecture.ts'
 import { PackagePlatform } from './platform/platform.ts'
-import { Result } from "folklore";
+import { Result } from 'folklore'
 
 Deno.test('download_binary', () => {
   const commandSpy = spy(() => Result.Ok(''))
   download_binary('1.2.3', PackageArchitecture.x64, PackagePlatform.linux, 'dir', commandSpy)
   assertSpyCalls(commandSpy, 1)
   assertSpyCallArgs(commandSpy, 0, [
-    "gh",
+    'gh',
     [
-      "--repo",
-      "denoland/deno",
-      "release",
-      "download",
-      "v1.2.3",
-      "--clobber",
-      "--pattern",
-      "deno-x86_64-unknown-linux-gnu.zip",
-      "--output",
-      "dir/temp/deno.zip",
-    ]
+      '--repo',
+      'denoland/deno',
+      'release',
+      'download',
+      'v1.2.3',
+      '--clobber',
+      '--pattern',
+      'deno-x86_64-unknown-linux-gnu.zip',
+      '--output',
+      'dir/temp/deno.zip',
+    ],
   ])
 })
 
@@ -37,11 +37,11 @@ Deno.test('unzip_binary', () => {
   unzip_binary('dir', commandSpy)
   assertSpyCalls(commandSpy, 1)
   assertSpyCallArgs(commandSpy, 0, [
-    "unzip",
+    'unzip',
     [
-      "dir/temp/deno.zip",
-      "-d",
-      "dir/bin",
-    ]
+      'dir/temp/deno.zip',
+      '-d',
+      'dir/bin',
+    ],
   ])
 })
