@@ -12,8 +12,11 @@ on:
         required: true
         type: string
 
+env:
+  GH_TOKEN: ${{ github.token }}
+
 jobs:
-  build:
+  build-packages:
     strategy:
       matrix:
         platform: [apple, linux, windows]
@@ -29,3 +32,16 @@ jobs:
         with:
           name: deno-npx-${{ matrix.platform }}-${{ matrix.architecture }}
           path: build/deno-npx-${{ matrix.platform }}-${{ matrix.architecture }}
+  build-main:
+    runs-on: ubuntu-latest
+    needs: build-packages
+    steps:
+      - uses: actions/checkout@v3
+      - uses: denoland/setup-deno@v1.1.2
+        with:
+          deno-version: v1.33.x
+      - run: deno task build:main --version ${{ inputs.version }}
+      - uses: actions/upload-artifact@v3
+        with:
+          name: deno-npx
+          path: build/deno-npx
