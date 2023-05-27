@@ -45,24 +45,20 @@ jobs:
           name: deno-npx
           path: build/deno-npx
   publish-packages:
-    needs: build-packages
+    needs: [build-packages, build-main]
     strategy:
       matrix:
         platform: [apple, linux, windows]
         architecture: [x64, arm64]
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
       - uses: actions/download-artifact@v3
         with:
           name: deno-npx-${{ matrix.platform }}-${{ matrix.architecture }}
-          path: build/deno-npx-${{ matrix.platform }}-${{ matrix.architecture }}
       - uses: actions/setup-node@v3
         with:
           node-version: '18.x'
           registry-url: 'https://registry.npmjs.org'
-      - run: cp ./.npmrc build/deno-npx-${{ matrix.platform }}-${{ matrix.architecture }}
       - run: npm publish
-        working-directory: build/deno-npx-${{ matrix.platform }}-${{ matrix.architecture }}
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
