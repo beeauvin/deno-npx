@@ -13,9 +13,10 @@ your OS. `deno-npx-apple-arm64` for instance will give an unsupported error up u
 is when support was added by the deno team. Currently, there are no deno binaries for windows or
 linux arm64 builds.
 
-This package has two components: The main package (`deno-npx`) and sub packages for individual
-platform support (`deno-npx-apple-arm64`, etc). This offloads most of the work to npm and makes it
-possible to run commands, when installed locally, directly through deno (not a node child process).
+This package has two components: The main package (`deno-npx`) using npm optional dependencies and
+the sub packages for individual platform support (`deno-npx-apple-arm64`, etc). This offloads most
+of the work to npm and makes it possible to run commands, when installed locally, directly through
+deno (not a node child process).
 
 ## Usage
 
@@ -56,6 +57,10 @@ $ npm install --save-dev deno-npx
 
 This project was heavily inspired by [Yoshiya Hinosawa (kt3k)](https://github.com/kt3k)'s work on
 [deno-bin](https://github.com/kt3k/deno-bin).
+
+`deno-bin` is great but I wanted something that could use deno locally without going through a node
+child process. I took the opportunity to do a couple other things I wanted to see as well: No
+dependencies, built with deno, high test coverage, etc.
 
 ## License
 
