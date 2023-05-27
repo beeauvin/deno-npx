@@ -14,6 +14,10 @@ export enum NodePlatform {
   darwin = 'darwin',
   win32 = 'win32',
   linux = 'linux',
+  aix = 'aix',
+  freebsd = 'freebsd',
+  openbsd = 'openbsd',
+  sunos = 'sunos',
 }
 
 export enum PackagePlatform {
@@ -52,6 +56,8 @@ export function convert_platform_node_to_deno(platform: NodePlatform): DenoPlatf
       return DenoPlatform.pc_windows_msvc
     case NodePlatform.linux:
       return DenoPlatform.unknown_linux_gnu
+    default:
+      throw new Error(`Unsupported platform: ${platform}`)
   }
 }
 
@@ -63,6 +69,8 @@ export function convert_platform_node_to_package(platform: NodePlatform): Packag
       return PackagePlatform.windows
     case NodePlatform.linux:
       return PackagePlatform.linux
+    default:
+      throw new Error(`Unsupported platform: ${platform}`)
   }
 }
 
