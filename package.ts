@@ -4,6 +4,10 @@
  * file, You can obtain one at https://mozilla.org/MPL/2.0/.
  */
 
+import { convert_platform_package_to_node, PackagePlatform } from './functions/platform/platform.ts'
+
+import { PackageArchitecture } from './functions/platform/architecture.ts'
+
 export const pkg = {
   name: 'deno-npx',
   version: '',
@@ -22,4 +26,23 @@ export const pkg = {
   engines: {
     node: '>=18',
   },
+}
+
+export function generatePackageJson(
+  version: string,
+  platform: PackagePlatform,
+  architecture: PackageArchitecture,
+  supported: boolean,
+) {
+  const bin = platform === PackagePlatform.windows ? './bin/deno.exe' : './bin/deno'
+  return ({
+    ...pkg,
+    name: `${pkg.name}-${platform}-${architecture}`,
+    version,
+    os: [convert_platform_package_to_node(platform)],
+    cpu: [architecture],
+    bin: {
+      'deno-npx-platform': supported ? bin : './bin/unsupported.js',
+    },
+  })
 }

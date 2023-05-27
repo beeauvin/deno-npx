@@ -10,7 +10,7 @@ import { Result } from 'folklore'
  * Spawns a command, syncronously with Deno.Command and returns the result
  * wrapped in a folklore Result.
  */
-export function command(command: string, args: string[] = []) {
+export function command(command: string, args: string[] = []): Result<string> {
   const cmd = new Deno.Command(command, { args })
   const { success, stdout, stderr } = cmd.outputSync()
   if (success) return Result.Ok(new TextDecoder().decode(stdout))
