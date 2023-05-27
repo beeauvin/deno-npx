@@ -16,17 +16,16 @@ jobs:
   build:
     strategy:
       matrix:
-        platform: [apple-darwin, unknown-linux-gnu, pc-windows-msvc]
-        architecture: [x86_64, aarch64]
+        platform: [apple, linux, windows]
+        architecture: [x64, arm64]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
       - uses: denoland/setup-deno@v1.1.2
         with:
           deno-version: v1.33.x
-      - run: deno task prebuild
-      - run: deno task build:platform ${{ inputs.version }} ${{ matrix.architecture }} ${{ matrix.platform }}
+      - run: deno task build:package --version ${{ inputs.version }} --arch ${{ matrix.architecture }} --platform ${{ matrix.platform }}
       - uses: actions/upload-artifact@v3
         with:
-          name: deno-npx-${{ matrix.platform }}-${{ matrix.architecture }}-${{ inputs.version }}
-          path: build/dist
+          name: deno-npx-${{ matrix.platform }}-${{ matrix.architecture }}
+          path: build/deno-npx-${{ matrix.platform }}-${{ matrix.architecture }}
