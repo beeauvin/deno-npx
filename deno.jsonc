@@ -9,7 +9,7 @@
   "imports": {
     "dnt/": "https://deno.land/x/dnt@0.35.0/",
     "std/": "https://deno.land/std@0.187.0/",
-    "folklore": "https://deno.land/x/folklore@v0.2.0/mod.ts"
+    "folklore": "https://deno.land/x/folklore@v0.2.2/mod.ts"
   },
   "lint": {},
   "fmt": {

@@ -11,6 +11,8 @@ import { parse } from 'std/flags/mod.ts'
  * Parses Deno.args and returns the value of the given argument, parsed by
  * std/flags and wrapped in a folklore Maybe.
  */
-export function get_argument(argument: string, args = Deno.args): Maybe<string | number | boolean> {
-  return Maybe.FromNullable(parse(args)[argument])
+export function get_argument(argument: string, args = Deno.args): Maybe<string> {
+  return Maybe.FromNullable<string | boolean | number>(
+    parse(args)[argument],
+  ).chain((value) => Maybe.Just(`${value}`))
 }
