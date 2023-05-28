@@ -13,7 +13,7 @@ export const PackageMetadata = {
       supported: true,
     },
     [PackageArchitecture.arm64]: {
-      supported: false,
+      supported: true,
     },
   },
 
