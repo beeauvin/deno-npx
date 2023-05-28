@@ -8,10 +8,11 @@ file, You can obtain one at https://mozilla.org/MPL/2.0/.
 
 Use deno through npm | npx.
 
-Supports v1.1.0+ of deno, including minor versions. Note that some package versions may not support
-your OS. `deno-npx-apple-arm64` for instance will give an unsupported error up until v1.6.0 as that
-is when support was added by the deno team. Currently, there are no deno binaries for windows or
-linux arm64 builds.
+Supports v1.1.0+ of deno, including patch versions. Versions with security warnings or that are
+otherwise deprecated by the deno team will be reflected here. Note that some package versions may
+not support your OS. `deno-npx-apple-arm64` for instance will give an unsupported error up until
+v1.6.0 as that is when support was added by the deno team. Currently, there are no deno binaries for
+windows or linux arm64 builds.
 
 This package has two components: The main package (`deno-npx`) using npm optional dependencies and
 the sub packages for individual platform support (`deno-npx-apple-arm64`, etc). This offloads most
@@ -20,10 +21,19 @@ deno (not a node child process).
 
 ## Usage
 
+Realistically you can run any deno cli command. See:
+
+- https://deno.com/manual/introduction
+- https://deno.com/manual/tools
+
+
 ### Through npx directly:
 
 ```bash
 $ npx deno-npx --version
+
+# Run in interactive (repl) mode
+$ npx deno-npx
 
 # If you know your platform/arch (apple, windows, linux)/(x64, arm64)
 $ npx deno-npx-windows-x64 --version
