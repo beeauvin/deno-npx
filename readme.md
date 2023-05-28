@@ -4,7 +4,7 @@ License, v. 2.0. If a copy of the MPL was not distributed with this
 file, You can obtain one at https://mozilla.org/MPL/2.0/.
 -->
 
-# deno-npx
+# deno-npx [![npm](https://img.shields.io/npm/v/deno-npx)](https://www.npmjs.com/package/deno-npx)
 
 Use deno through npm | npx.
 
@@ -20,7 +20,7 @@ deno (not a node child process).
 
 ## Usage
 
-Through npx directly:
+### Through npx directly:
 
 ```bash
 $ npx deno-npx --version
@@ -32,7 +32,7 @@ $ npx deno-npx-windows-x64 --version
 $ npx deno-npx@1.1.0 --version
 ```
 
-Install locally on a project:
+### Install locally on a project:
 
 ```bash
 $ npm install --save-dev deno-npx
@@ -52,6 +52,11 @@ $ npm install --save-dev deno-npx
   }
 }
 ```
+
+## A note on versions
+
+This package (github releases) is versioned separately than the npm packages it creates. See the
+badge at the top of the readme for the current latest version of the package on npm.
 
 ## Acknowledgement
 
