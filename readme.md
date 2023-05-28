@@ -26,7 +26,6 @@ Realistically you can run any deno cli command. See:
 - https://deno.com/manual/introduction
 - https://deno.com/manual/tools
 
-
 ### Through npx directly:
 
 ```bash
